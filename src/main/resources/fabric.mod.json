@@ -22,6 +22,8 @@
     "minecraft": "${minecraft_version}",
     "polymer-core": ">=${polymer_version}",
     "polymer-resource-pack": ">=${polymer_version}",
-    "sgui": ">=${sgui_version}"
+    "polymer-blocks": ">=${polymer_version}",
+    "sgui": ">=${sgui_version}",
+    "server_translations_api": ">=${server_translations_version}"
   }
 }
