@@ -19,6 +19,9 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "polymer-core": ">=${polymer_version}",
+    "polymer-resource-pack": ">=${polymer_version}",
+    "sgui": ">=${sgui_version}"
   }
 }
