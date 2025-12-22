@@ -1,0 +1,11 @@
+# Output and build directories
+.gradle/
+build/
+run/
+out/
+classes/
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
