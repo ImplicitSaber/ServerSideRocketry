@@ -3,7 +3,7 @@ package io.github.implicitsaber.mod.server_side_rocketry;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import io.github.implicitsaber.mod.server_side_rocketry.keys.ModWorldKeys;
 import io.github.implicitsaber.mod.server_side_rocketry.reg.*;
-import io.github.implicitsaber.mod.server_side_rocketry.util.GravityManager;
+import io.github.implicitsaber.mod.server_side_rocketry.util.SpaceEffectsManager;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
@@ -21,7 +21,7 @@ public class ServerSideRocketry implements ModInitializer {
         ModBlockItems.load();
         ModEntityTypes.load();
 
-        GravityManager.register(ModWorldKeys.MOON, 0.17);
+        SpaceEffectsManager.register(ModWorldKeys.MOON, new SpaceEffectsManager.SpaceEffects(0.17, false));
     }
 
     public static Identifier id(String path) {

@@ -6,7 +6,8 @@
   "mixins": [
     "EntityMixin",
     "ItemDisplayEntityAccessor",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "ServerPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

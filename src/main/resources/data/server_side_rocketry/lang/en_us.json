@@ -4,9 +4,15 @@
   "item.server_side_rocketry.space_chestplate": "Space Suit",
   "item.server_side_rocketry.space_leggings": "Space Leggings",
   "item.server_side_rocketry.space_boots": "Space Boots",
+  "item.server_side_rocketry.oxygen_canister": "Oxygen Canister",
 
   "block.server_side_rocketry.moon_rock": "Moon Rock",
 
   "entity.server_side_rocketry.rocket": "Rocket",
-  "entity.server_side_rocketry.passengers_holder": "Passengers Holder"
+  "entity.server_side_rocketry.passengers_holder": "Passengers Holder",
+
+  "death.attack.server_side_rocketry.oxygen_loss": "%s experienced hypoxia",
+
+  "server_side_rocketry.oxygen": "Oxygen: %s/%s",
+  "server_side_rocketry.oxygen_boss_bar": "Oxygen"
 }

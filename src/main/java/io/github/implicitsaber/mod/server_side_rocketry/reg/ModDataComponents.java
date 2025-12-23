@@ -1,5 +1,6 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
+import com.mojang.serialization.Codec;
 import eu.pb4.polymer.core.api.other.PolymerComponent;
 import net.minecraft.component.ComponentType;
 import net.minecraft.registry.Registries;
@@ -19,8 +20,25 @@ public class ModDataComponents {
             ComponentType.<Unit>builder().codec(Unit.CODEC).build()
     );
 
+    public static final RegistryKey<ComponentType<?>> OXYGEN_KEY = RegistryKey.of(RegistryKeys.DATA_COMPONENT_TYPE, id("oxygen"));
+    public static final ComponentType<Integer> OXYGEN = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            OXYGEN_KEY,
+            ComponentType.<Integer>builder().codec(Codec.INT).build()
+    );
+
+    public static final RegistryKey<ComponentType<?>> MAX_OXYGEN_KEY = RegistryKey.of(RegistryKeys.DATA_COMPONENT_TYPE, id("max_oxygen"));
+    public static final ComponentType<Integer> MAX_OXYGEN = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            MAX_OXYGEN_KEY,
+            ComponentType.<Integer>builder().codec(Codec.INT).build()
+    );
+
+
     static {
         PolymerComponent.registerDataComponent(SPACE_ARMOR);
+        PolymerComponent.registerDataComponent(OXYGEN);
+        PolymerComponent.registerDataComponent(MAX_OXYGEN);
     }
 
     public static void load() {}

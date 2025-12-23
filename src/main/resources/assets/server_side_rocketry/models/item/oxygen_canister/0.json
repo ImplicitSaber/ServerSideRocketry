@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "server_side_rocketry:item/oxygen_canister/0"
+  }
+}
