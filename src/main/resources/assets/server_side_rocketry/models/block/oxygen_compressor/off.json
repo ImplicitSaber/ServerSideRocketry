@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "north": "server_side_rocketry:block/oxygen_compressor/off",
+    "east": "server_side_rocketry:block/oxygen_compressor/side",
+    "south": "server_side_rocketry:block/oxygen_compressor/side",
+    "west": "server_side_rocketry:block/oxygen_compressor/side",
+    "up": "server_side_rocketry:block/oxygen_compressor/side",
+    "down": "server_side_rocketry:block/oxygen_compressor/side",
+    "particle": "server_side_rocketry:block/oxygen_compressor/side"
+  }
+}

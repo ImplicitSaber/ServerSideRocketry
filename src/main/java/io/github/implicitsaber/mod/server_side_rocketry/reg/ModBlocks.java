@@ -1,6 +1,7 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
 import io.github.implicitsaber.mod.server_side_rocketry.block.MoonRockBlock;
+import io.github.implicitsaber.mod.server_side_rocketry.block.OxygenCompressorBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -18,6 +19,13 @@ public class ModBlocks {
             Registries.BLOCK,
             MOON_ROCK_KEY,
             new MoonRockBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(MOON_ROCK_KEY))
+    );
+
+    public static final RegistryKey<Block> OXYGEN_COMPRESSOR_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("oxygen_compressor"));
+    public static final OxygenCompressorBlock OXYGEN_COMPRESSOR = Registry.register(
+            Registries.BLOCK,
+            OXYGEN_COMPRESSOR_KEY,
+            new OxygenCompressorBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).registryKey(OXYGEN_COMPRESSOR_KEY))
     );
 
     public static void load() {}

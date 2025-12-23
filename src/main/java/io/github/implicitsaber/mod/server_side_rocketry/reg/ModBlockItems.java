@@ -16,7 +16,14 @@ public class ModBlockItems {
     public static final ServerBlockItem MOON_ROCK = Registry.register(
             Registries.ITEM,
             MOON_ROCK_KEY,
-            new ServerBlockItem(ModBlocks.MOON_ROCK, Items.STONE, new Item.Settings().registryKey(MOON_ROCK_KEY))
+            new ServerBlockItem(ModBlocks.MOON_ROCK, Items.SMOOTH_STONE, new Item.Settings().registryKey(MOON_ROCK_KEY))
+    );
+
+    public static final RegistryKey<Item> OXYGEN_COMPRESSOR_KEY = RegistryKey.of(RegistryKeys.ITEM, id("oxygen_compressor"));
+    public static final ServerBlockItem OXYGEN_COMPRESSOR = Registry.register(
+            Registries.ITEM,
+            OXYGEN_COMPRESSOR_KEY,
+            new ServerBlockItem(ModBlocks.OXYGEN_COMPRESSOR, Items.IRON_BLOCK, new Item.Settings().registryKey(OXYGEN_COMPRESSOR_KEY))
     );
 
     public static void load() {}

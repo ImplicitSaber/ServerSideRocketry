@@ -9,7 +9,7 @@ import xyz.nucleoid.packettweaker.PacketContext;
 
 public class MoonRockBlock extends Block implements PolymerTexturedBlock {
 
-    private static final BlockState FALLBACK = Blocks.STONE.getDefaultState();
+    private static final BlockState FALLBACK = Blocks.SMOOTH_STONE.getDefaultState();
 
     public MoonRockBlock(Settings settings) {
         super(settings);
