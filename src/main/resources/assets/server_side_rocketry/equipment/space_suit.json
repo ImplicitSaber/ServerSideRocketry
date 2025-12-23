@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "server_side_rocketry:space_suit"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "server_side_rocketry:space_suit"
+      }
+    ]
+  }
+}

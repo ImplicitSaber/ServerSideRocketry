@@ -1,5 +1,12 @@
 {
   "item.server_side_rocketry.moon_rock": "Moon Rock",
+  "item.server_side_rocketry.space_helmet": "Space Helmet",
+  "item.server_side_rocketry.space_chestplate": "Space Suit",
+  "item.server_side_rocketry.space_leggings": "Space Leggings",
+  "item.server_side_rocketry.space_boots": "Space Boots",
 
-  "block.server_side_rocketry.moon_rock": "Moon Rock"
+  "block.server_side_rocketry.moon_rock": "Moon Rock",
+
+  "entity.server_side_rocketry.rocket": "Rocket",
+  "entity.server_side_rocketry.passengers_holder": "Passengers Holder"
 }
