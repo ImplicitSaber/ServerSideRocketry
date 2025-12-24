@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "server_side_rocketry:poly_gui/planet_select/mercury"
+  },
+  "oversized_in_gui": true
+}

@@ -26,5 +26,18 @@
   "server_side_rocketry.oxygen_compressor.on": "RUNNING",
   "server_side_rocketry.oxygen_compressor.on.desc": "Filling canister",
   "server_side_rocketry.oxygen_compressor.full": "FULL",
-  "server_side_rocketry.oxygen_compressor.full.desc": "Canister is full"
+  "server_side_rocketry.oxygen_compressor.full.desc": "Canister is full",
+  "server_side_rocketry.not_on_celestial": "Space is inaccessible from here",
+  "server_side_rocketry.you_are_here": "YOU ARE HERE",
+  "server_side_rocketry.planet_select": "Select Destination",
+  "server_side_rocketry.celestial.earth": "Earth",
+  "server_side_rocketry.celestial.earth.desc": "The most habitable planet in the Solar System.",
+  "server_side_rocketry.celestial.moon": "Moon",
+  "server_side_rocketry.celestial.moon.desc": "Earth's rocky, lifeless moon.",
+  "server_side_rocketry.celestial.mercury": "Mercury",
+  "server_side_rocketry.celestial.mercury.desc": "Extremely hot due to its proximity to the Sun.",
+  "server_side_rocketry.celestial.venus": "Venus",
+  "server_side_rocketry.celestial.venus.desc": "Its conditions are so intense that nothing can survive.",
+  "server_side_rocketry.celestial.mars": "Mars",
+  "server_side_rocketry.celestial.mars.desc": "Gains its red color from iron oxide."
 }
