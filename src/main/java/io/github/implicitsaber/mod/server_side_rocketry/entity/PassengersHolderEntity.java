@@ -1,15 +1,19 @@
 package io.github.implicitsaber.mod.server_side_rocketry.entity;
 
 import eu.pb4.polymer.core.api.entity.PolymerEntity;
+import io.github.implicitsaber.mod.server_side_rocketry.mixin.DisplayEntityAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.world.World;
 import xyz.nucleoid.packettweaker.PacketContext;
+
+import java.util.List;
 
 public class PassengersHolderEntity extends Entity implements PolymerEntity {
 
@@ -24,6 +28,12 @@ public class PassengersHolderEntity extends Entity implements PolymerEntity {
         super.tick();
         this.ticksUntilDespawn--;
         if(this.ticksUntilDespawn <= 0) this.discard();
+    }
+
+    @Override
+    public void modifyRawTrackedData(List<DataTracker.SerializedEntry<?>> data, ServerPlayerEntity player, boolean initial) {
+        data.add(DataTracker.SerializedEntry.of(DisplayEntityAccessor.getInterpolationDurationData(), 3));
+        data.add(DataTracker.SerializedEntry.of(DisplayEntityAccessor.getTeleportDurationData(), 3));
     }
 
     @Override

@@ -22,6 +22,7 @@ public class ServerSideRocketry implements ModInitializer {
         ModBlockItems.load();
         ModBlockEntities.load();
         ModEntityTypes.load();
+        ModSoundEvents.load();
 
         SpaceEffectsManager.register(ModWorldKeys.MOON, new SpaceEffectsManager.SpaceEffects(0.17, false));
     }

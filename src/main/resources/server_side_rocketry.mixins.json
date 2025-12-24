@@ -4,6 +4,7 @@
   "package": "io.github.implicitsaber.mod.server_side_rocketry.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "DisplayEntityAccessor",
     "EntityMixin",
     "ItemDisplayEntityAccessor",
     "LivingEntityMixin",

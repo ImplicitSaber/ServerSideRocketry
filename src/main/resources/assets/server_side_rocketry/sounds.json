@@ -1,0 +1,8 @@
+{
+  "entity.rocket.engine": {
+    "subtitle": "subtitles.server_side_rocketry.entity.rocket.engine",
+    "sounds": [
+      "server_side_rocketry:rocket_engine"
+    ]
+  }
+}
