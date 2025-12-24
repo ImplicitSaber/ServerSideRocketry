@@ -1,0 +1,6 @@
+{
+  "parent": "server_side_rocketry:poly_gui/overfill",
+  "textures": {
+    "texture": "server_side_rocketry:poly_gui/filler"
+  }
+}

@@ -14,11 +14,13 @@ public class ServerSideRocketry implements ModInitializer {
     @Override
     public void onInitialize() {
         PolymerResourcePackUtils.addModAssets(MOD_ID);
+        PolymerResourcePackUtils.markAsRequired();
 
         ModItems.load();
         ModDataComponents.load();
         ModBlocks.load();
         ModBlockItems.load();
+        ModBlockEntities.load();
         ModEntityTypes.load();
 
         SpaceEffectsManager.register(ModWorldKeys.MOON, new SpaceEffectsManager.SpaceEffects(0.17, false));

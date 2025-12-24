@@ -4,6 +4,11 @@
       "type": "minecraft:directory",
       "source": "poly_entity",
       "prefix": "poly_entity/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "poly_gui",
+      "prefix": "poly_gui/"
     }
   ]
 }

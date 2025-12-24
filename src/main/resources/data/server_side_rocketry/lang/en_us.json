@@ -5,14 +5,26 @@
   "item.server_side_rocketry.space_leggings": "Space Leggings",
   "item.server_side_rocketry.space_boots": "Space Boots",
   "item.server_side_rocketry.oxygen_canister": "Oxygen Canister",
+  "item.server_side_rocketry.oxygen_compressor": "Oxygen Compressor",
 
   "block.server_side_rocketry.moon_rock": "Moon Rock",
+  "block.server_side_rocketry.oxygen_compressor": "Oxygen Compressor",
 
   "entity.server_side_rocketry.rocket": "Rocket",
   "entity.server_side_rocketry.passengers_holder": "Passengers Holder",
 
+  "container.server_side_rocketry.oxygen_compressor": "Oxygen Compressor",
+
   "death.attack.server_side_rocketry.oxygen_loss": "%s experienced hypoxia",
 
   "server_side_rocketry.oxygen": "Oxygen: %s/%s",
-  "server_side_rocketry.oxygen_boss_bar": "Oxygen"
+  "server_side_rocketry.oxygen_boss_bar": "Oxygen",
+  "server_side_rocketry.oxygen_compressor.off": "SHUTDOWN",
+  "server_side_rocketry.oxygen_compressor.off.desc": "No oxygen in atmosphere",
+  "server_side_rocketry.oxygen_compressor.standby": "STANDBY",
+  "server_side_rocketry.oxygen_compressor.standby.desc": "Ready to fill canister",
+  "server_side_rocketry.oxygen_compressor.on": "RUNNING",
+  "server_side_rocketry.oxygen_compressor.on.desc": "Filling canister",
+  "server_side_rocketry.oxygen_compressor.full": "FULL",
+  "server_side_rocketry.oxygen_compressor.full.desc": "Canister is full"
 }
