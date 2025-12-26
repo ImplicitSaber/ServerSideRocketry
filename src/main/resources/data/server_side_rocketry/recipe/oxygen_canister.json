@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "121",
+    "232",
+    "121"
+  ],
+  "key": {
+    "1": "#c:nuggets/iron",
+    "2": "#c:ingots/iron",
+    "3": "#c:dyes/light_blue"
+  },
+  "result": {
+    "id": "server_side_rocketry:oxygen_canister",
+    "count": 1
+  }
+}

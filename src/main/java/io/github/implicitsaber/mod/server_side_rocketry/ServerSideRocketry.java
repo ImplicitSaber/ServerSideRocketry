@@ -18,6 +18,7 @@ public class ServerSideRocketry implements ModInitializer {
 
         ModItems.load();
         ModDataComponents.load();
+        ModPolymerItemGroups.load();
         ModBlocks.load();
         ModBlockItems.load();
         ModBlockEntities.load();

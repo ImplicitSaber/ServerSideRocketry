@@ -1,6 +1,7 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
 import io.github.implicitsaber.mod.server_side_rocketry.item.OxygenCanisterItem;
+import io.github.implicitsaber.mod.server_side_rocketry.item.RocketItem;
 import io.github.implicitsaber.mod.server_side_rocketry.item.ServerItem;
 import io.github.implicitsaber.mod.server_side_rocketry.keys.ModEquipmentAssetKeys;
 import net.minecraft.component.DataComponentTypes;
@@ -73,6 +74,13 @@ public class ModItems {
             OXYGEN_CANISTER_KEY,
             new OxygenCanisterItem(new Item.Settings().registryKey(OXYGEN_CANISTER_KEY).maxCount(1)
                     .component(ModDataComponents.MAX_OXYGEN, 12000))
+    );
+
+    public static final RegistryKey<Item> ROCKET_KEY = RegistryKey.of(RegistryKeys.ITEM, id("rocket"));
+    public static final RocketItem ROCKET = Registry.register(
+            Registries.ITEM,
+            ROCKET_KEY,
+            new RocketItem(new Item.Settings().registryKey(ROCKET_KEY).maxCount(1))
     );
 
     public static void load() {}
