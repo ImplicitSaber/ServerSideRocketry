@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "121",
+    "232",
+    "454"
+  ],
+  "key": {
+    "1": "#c:ingots/iron",
+    "2": "#c:storage_blocks/iron",
+    "3": "#c:glass_panes/colorless",
+    "4": "minecraft:blackstone",
+    "5": "minecraft:blaze_powder"
+  },
+  "result": {
+    "id": "server_side_rocketry:rocket",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "111",
+    "231",
+    "141"
+  ],
+  "key": {
+    "1": "#minecraft:wool",
+    "2": "#c:ingots/copper",
+    "3": "minecraft:iron_helmet",
+    "4": "#c:glass_panes/colorless"
+  },
+  "result": {
+    "id": "server_side_rocketry:space_helmet",
+    "count": 1
+  }
+}

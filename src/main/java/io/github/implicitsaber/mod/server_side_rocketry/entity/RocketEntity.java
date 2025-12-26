@@ -13,6 +13,7 @@ import io.github.implicitsaber.mod.server_side_rocketry.keys.ModWorldKeys;
 import io.github.implicitsaber.mod.server_side_rocketry.mixin.DisplayEntityAccessor;
 import io.github.implicitsaber.mod.server_side_rocketry.mixin.ItemDisplayEntityAccessor;
 import io.github.implicitsaber.mod.server_side_rocketry.reg.ModEntityTypes;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModItems;
 import io.github.implicitsaber.mod.server_side_rocketry.reg.ModSoundEvents;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.component.DataComponentTypes;
@@ -42,6 +43,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
+import net.minecraft.world.rule.GameRules;
 import xyz.nucleoid.packettweaker.PacketContext;
 
 import java.util.*;
@@ -88,8 +90,9 @@ public class RocketEntity extends Entity implements PolymerEntity {
             element.setHeight(this.getHeight());
             element.setInitialPosition(this.getBoundingBox().getCenter());
             holder.addElement(element);
-            new EntityAttachment(holder, this, true);
+            new EntityAttachment(holder, this, false);
         }
+        holder.tick();
         if(this.passengersHolderId != null) {
             Entity e = this.getEntityWorld().getEntity(this.passengersHolderId);
             if(e instanceof PassengersHolderEntity p) {
@@ -236,7 +239,18 @@ public class RocketEntity extends Entity implements PolymerEntity {
 
     @Override
     public boolean damage(ServerWorld world, DamageSource source, float amount) {
-        return false;
+        if(this.isAlwaysInvulnerableTo(source)) return false;
+        if(this.isRemoved()) return false;
+        this.remove(RemovalReason.KILLED);
+        boolean creative = source.getAttacker() instanceof PlayerEntity p && p.isCreative();
+        if(!creative && world.getGameRules().getValue(GameRules.ENTITY_DROPS)) this.dropStack(world, this.toStack());
+        return true;
+    }
+
+    public ItemStack toStack() {
+        ItemStack stack = new ItemStack(ModItems.ROCKET);
+        stack.set(DataComponentTypes.CUSTOM_NAME, this.getCustomName());
+        return stack;
     }
 
     @Override

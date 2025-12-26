@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "121",
+    "232",
+    "121"
+  ],
+  "key": {
+    "1": "#minecraft:wool",
+    "2": "#c:ingots/copper",
+    "3": "minecraft:iron_leggings"
+  },
+  "result": {
+    "id": "server_side_rocketry:space_leggings",
+    "count": 1
+  }
+}
