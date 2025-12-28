@@ -11,7 +11,7 @@ import net.minecraft.util.Unit;
 
 import static io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry.id;
 
-public class ModDataComponents {
+public class ModDataComponentTypes {
 
     public static final RegistryKey<ComponentType<?>> SPACE_ARMOR_KEY = RegistryKey.of(RegistryKeys.DATA_COMPONENT_TYPE, id("space_armor"));
     public static final ComponentType<Unit> SPACE_ARMOR = Registry.register(

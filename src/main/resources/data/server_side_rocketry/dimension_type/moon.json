@@ -12,7 +12,8 @@
     "minecraft:gameplay/monsters_burn": true,
     "minecraft:gameplay/can_pillager_patrol_spawn": false,
     "minecraft:gameplay/can_start_raid": false,
-    "minecraft:visual/water_fog_color": "#000000"
+    "minecraft:visual/water_fog_color": "#000000",
+    "minecraft:gameplay/water_evaporates": true
   },
   "ambient_light": 0,
   "coordinate_scale": 1,

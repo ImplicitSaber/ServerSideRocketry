@@ -1,6 +1,7 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
 import eu.pb4.polymer.core.api.entity.PolymerEntityUtils;
+import io.github.implicitsaber.mod.server_side_rocketry.entity.CargoRocketEntity;
 import io.github.implicitsaber.mod.server_side_rocketry.entity.PassengersHolderEntity;
 import io.github.implicitsaber.mod.server_side_rocketry.entity.RocketEntity;
 import net.minecraft.entity.EntityType;
@@ -36,9 +37,21 @@ public class ModEntityTypes {
                     .build(PASSENGERS_HOLDER_KEY)
     );
 
+    public static final RegistryKey<EntityType<?>> CARGO_ROCKET_KEY = RegistryKey.of(RegistryKeys.ENTITY_TYPE, id("cargo_rocket"));
+    public static final EntityType<CargoRocketEntity> CARGO_ROCKET = Registry.register(
+            Registries.ENTITY_TYPE,
+            CARGO_ROCKET_KEY,
+            EntityType.Builder.create(CargoRocketEntity::new, SpawnGroup.MISC)
+                    .dropsNothing()
+                    .dimensions(1, 3)
+                    .maxTrackingRange(8)
+                    .build(CARGO_ROCKET_KEY)
+    );
+
     static {
         PolymerEntityUtils.registerType(ROCKET);
         PolymerEntityUtils.registerType(PASSENGERS_HOLDER);
+        PolymerEntityUtils.registerType(CARGO_ROCKET);
     }
 
     public static void load() {}

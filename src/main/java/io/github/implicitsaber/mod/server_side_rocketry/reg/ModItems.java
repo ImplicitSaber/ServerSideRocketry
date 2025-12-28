@@ -29,7 +29,7 @@ public class ModItems {
                             .equipSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC)
                             .model(ModEquipmentAssetKeys.SPACE_SUIT)
                             .build())
-                    .component(ModDataComponents.SPACE_ARMOR, Unit.INSTANCE))
+                    .component(ModDataComponentTypes.SPACE_ARMOR, Unit.INSTANCE))
     );
 
     public static final RegistryKey<Item> SPACE_CHESTPLATE_KEY = RegistryKey.of(RegistryKeys.ITEM, id("space_chestplate"));
@@ -41,7 +41,7 @@ public class ModItems {
                             .equipSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC)
                             .model(ModEquipmentAssetKeys.SPACE_SUIT)
                             .build())
-                    .component(ModDataComponents.SPACE_ARMOR, Unit.INSTANCE))
+                    .component(ModDataComponentTypes.SPACE_ARMOR, Unit.INSTANCE))
     );
 
     public static final RegistryKey<Item> SPACE_LEGGINGS_KEY = RegistryKey.of(RegistryKeys.ITEM, id("space_leggings"));
@@ -53,7 +53,7 @@ public class ModItems {
                             .equipSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC)
                             .model(ModEquipmentAssetKeys.SPACE_SUIT)
                             .build())
-                    .component(ModDataComponents.SPACE_ARMOR, Unit.INSTANCE))
+                    .component(ModDataComponentTypes.SPACE_ARMOR, Unit.INSTANCE))
     );
 
     public static final RegistryKey<Item> SPACE_BOOTS_KEY = RegistryKey.of(RegistryKeys.ITEM, id("space_boots"));
@@ -65,7 +65,7 @@ public class ModItems {
                             .equipSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC)
                             .model(ModEquipmentAssetKeys.SPACE_SUIT)
                             .build())
-                    .component(ModDataComponents.SPACE_ARMOR, Unit.INSTANCE))
+                    .component(ModDataComponentTypes.SPACE_ARMOR, Unit.INSTANCE))
     );
 
     public static final RegistryKey<Item> OXYGEN_CANISTER_KEY = RegistryKey.of(RegistryKeys.ITEM, id("oxygen_canister"));
@@ -73,14 +73,21 @@ public class ModItems {
             Registries.ITEM,
             OXYGEN_CANISTER_KEY,
             new OxygenCanisterItem(new Item.Settings().registryKey(OXYGEN_CANISTER_KEY).maxCount(1)
-                    .component(ModDataComponents.MAX_OXYGEN, 12000))
+                    .component(ModDataComponentTypes.MAX_OXYGEN, 12000))
     );
 
     public static final RegistryKey<Item> ROCKET_KEY = RegistryKey.of(RegistryKeys.ITEM, id("rocket"));
     public static final RocketItem ROCKET = Registry.register(
             Registries.ITEM,
             ROCKET_KEY,
-            new RocketItem(new Item.Settings().registryKey(ROCKET_KEY).maxCount(1))
+            new RocketItem(ModEntityTypes.ROCKET, new Item.Settings().registryKey(ROCKET_KEY).maxCount(1))
+    );
+
+    public static final RegistryKey<Item> CARGO_ROCKET_KEY = RegistryKey.of(RegistryKeys.ITEM, id("cargo_rocket"));
+    public static final RocketItem CARGO_ROCKET = Registry.register(
+            Registries.ITEM,
+            CARGO_ROCKET_KEY,
+            new RocketItem(ModEntityTypes.CARGO_ROCKET, new Item.Settings().registryKey(CARGO_ROCKET_KEY).maxCount(1))
     );
 
     public static void load() {}

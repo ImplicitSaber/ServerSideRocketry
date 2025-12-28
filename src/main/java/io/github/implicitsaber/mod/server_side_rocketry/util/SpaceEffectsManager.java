@@ -23,8 +23,8 @@ public class SpaceEffectsManager {
         return EFFECTS_MAP.getOrDefault(world, SpaceEffects.DEFAULT);
     }
 
-    public record SpaceEffects(double gravity, boolean hasOxygen) {
-        public static final SpaceEffects DEFAULT = new SpaceEffects(1, true);
+    public record SpaceEffects(double gravity, boolean hasOxygen, Climate climate, boolean highPressure) {
+        public static final SpaceEffects DEFAULT = new SpaceEffects(1, true, Climate.NORMAL, false);
     }
 
 }

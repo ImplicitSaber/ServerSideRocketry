@@ -7,8 +7,8 @@ import eu.pb4.sgui.api.gui.SimpleGui;
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
 import io.github.implicitsaber.mod.server_side_rocketry.block_entity.OxygenCompressorBlockEntity;
 import io.github.implicitsaber.mod.server_side_rocketry.poly.PolyBlockModels;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModBlockEntities;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponents;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModBlockEntityTypes;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -16,7 +16,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -71,7 +70,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
         };
         gui.setTitle(be.getName());
         GuiElementBuilder filler = new GuiElementBuilder(Items.LIGHT_GRAY_STAINED_GLASS_PANE)
-                .setComponent(DataComponentTypes.ITEM_MODEL, FILLER_MODEL)
+                .model(FILLER_MODEL)
                 .setItemName(Text.empty())
                 .hideTooltip();
         gui.setSlot(0, filler);
@@ -80,7 +79,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
         gui.setSlotRedirect(1, new Slot(be, 0, 0, 0) {
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0) > 0;
+                return stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0) > 0;
             }
         });
         updateGui(gui, state.get(STATE));
@@ -132,12 +131,12 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
 
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return ModBlockEntities.OXYGEN_COMPRESSOR.instantiate(pos, state);
+        return ModBlockEntityTypes.OXYGEN_COMPRESSOR.instantiate(pos, state);
     }
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient() ? null : validateTicker(type, ModBlockEntities.OXYGEN_COMPRESSOR, OxygenCompressorBlockEntity::serverTick);
+        return world.isClient() ? null : validateTicker(type, ModBlockEntityTypes.OXYGEN_COMPRESSOR, OxygenCompressorBlockEntity::serverTick);
     }
 
     public enum State implements StringIdentifiable {
@@ -148,7 +147,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
             m.put(Direction.WEST, PolyBlockModels.OXYGEN_COMPRESSOR_OFF_WEST_STATE);
         }), new GuiElementBuilder(Items.RED_STAINED_GLASS_PANE)
                 .setItemName(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.off").formatted(Formatting.RED))
-                .setComponent(DataComponentTypes.ITEM_MODEL, ServerSideRocketry.id("poly_gui/oxygen_compressor/off"))
+                .model(ServerSideRocketry.id("poly_gui/oxygen_compressor/off"))
                 .addLoreLineRaw(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.off.desc").setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)))
         ),
         STANDBY(Util.make(new EnumMap<>(Direction.class), m -> {
@@ -158,7 +157,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
             m.put(Direction.WEST, PolyBlockModels.OXYGEN_COMPRESSOR_STANDBY_WEST_STATE);
         }), new GuiElementBuilder(Items.YELLOW_STAINED_GLASS_PANE)
                 .setItemName(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.standby").formatted(Formatting.YELLOW))
-                .setComponent(DataComponentTypes.ITEM_MODEL, ServerSideRocketry.id("poly_gui/oxygen_compressor/standby"))
+                .model(ServerSideRocketry.id("poly_gui/oxygen_compressor/standby"))
                 .addLoreLineRaw(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.standby.desc").setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)))
         ),
         ON(Util.make(new EnumMap<>(Direction.class), m -> {
@@ -168,7 +167,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
             m.put(Direction.WEST, PolyBlockModels.OXYGEN_COMPRESSOR_ON_WEST_STATE);
         }), new GuiElementBuilder(Items.LIME_STAINED_GLASS_PANE)
                 .setItemName(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.on").formatted(Formatting.GREEN))
-                .setComponent(DataComponentTypes.ITEM_MODEL, ServerSideRocketry.id("poly_gui/oxygen_compressor/on"))
+                .model(ServerSideRocketry.id("poly_gui/oxygen_compressor/on"))
                 .addLoreLineRaw(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.on.desc").setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)))
         ),
         FULL(Util.make(new EnumMap<>(Direction.class), m -> {
@@ -178,7 +177,7 @@ public class OxygenCompressorBlock extends BlockWithEntity implements PolymerTex
             m.put(Direction.WEST, PolyBlockModels.OXYGEN_COMPRESSOR_FULL_WEST_STATE);
         }), new GuiElementBuilder(Items.LIGHT_BLUE_STAINED_GLASS_PANE)
                 .setItemName(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.full").formatted(Formatting.AQUA))
-                .setComponent(DataComponentTypes.ITEM_MODEL, ServerSideRocketry.id("poly_gui/oxygen_compressor/full"))
+                .model(ServerSideRocketry.id("poly_gui/oxygen_compressor/full"))
                 .addLoreLineRaw(Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_compressor.full.desc").setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)))
         );
 

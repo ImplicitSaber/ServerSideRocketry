@@ -9,5 +9,8 @@ import static io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketr
 public class ModWorldKeys {
 
     public static final RegistryKey<World> MOON = RegistryKey.of(RegistryKeys.WORLD, id("moon"));
+    public static final RegistryKey<World> MERCURY = RegistryKey.of(RegistryKeys.WORLD, id("mercury"));
+    public static final RegistryKey<World> VENUS = RegistryKey.of(RegistryKeys.WORLD, id("venus"));
+    public static final RegistryKey<World> MARS = RegistryKey.of(RegistryKeys.WORLD, id("mars"));
 
 }

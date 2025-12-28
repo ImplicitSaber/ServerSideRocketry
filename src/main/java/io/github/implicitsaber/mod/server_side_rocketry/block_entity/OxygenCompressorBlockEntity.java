@@ -2,8 +2,8 @@ package io.github.implicitsaber.mod.server_side_rocketry.block_entity;
 
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
 import io.github.implicitsaber.mod.server_side_rocketry.block.OxygenCompressorBlock;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModBlockEntities;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponents;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModBlockEntityTypes;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
 import io.github.implicitsaber.mod.server_side_rocketry.util.SpaceEffectsManager;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.block.BlockState;
@@ -37,7 +37,7 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements SidedInv
     private Text customName = null;
 
     public OxygenCompressorBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.OXYGEN_COMPRESSOR, pos, state);
+        super(ModBlockEntityTypes.OXYGEN_COMPRESSOR, pos, state);
     }
 
     @Override
@@ -48,13 +48,13 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements SidedInv
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
         if(slot != 0) return false;
-        return stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0) > 0;
+        return stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0) > 0;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction dir) {
         if(slot != 0) return false;
-        return stack.getOrDefault(ModDataComponents.OXYGEN, 0) >= stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0);
+        return stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0) >= stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0);
     }
 
     @Override
@@ -139,11 +139,11 @@ public class OxygenCompressorBlockEntity extends BlockEntity implements SidedInv
         OxygenCompressorBlock.State machineState;
         if(hasOxygen) {
             if(!be.stack.isEmpty()) {
-                int maxOxygen = be.stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0);
+                int maxOxygen = be.stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0);
                 if(maxOxygen > 0) {
-                    int oxygen = be.stack.getOrDefault(ModDataComponents.OXYGEN, 0);
+                    int oxygen = be.stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0);
                     if(oxygen < maxOxygen) {
-                        be.stack.set(ModDataComponents.OXYGEN, Math.min(oxygen + 2, maxOxygen));
+                        be.stack.set(ModDataComponentTypes.OXYGEN, Math.min(oxygen + 2, maxOxygen));
                         be.markDirty();
                         machineState = OxygenCompressorBlock.State.ON;
                     } else machineState = OxygenCompressorBlock.State.FULL;

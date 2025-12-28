@@ -1,7 +1,6 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
-import io.github.implicitsaber.mod.server_side_rocketry.block.MoonRockBlock;
-import io.github.implicitsaber.mod.server_side_rocketry.block.OxygenCompressorBlock;
+import io.github.implicitsaber.mod.server_side_rocketry.block.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -26,6 +25,27 @@ public class ModBlocks {
             Registries.BLOCK,
             OXYGEN_COMPRESSOR_KEY,
             new OxygenCompressorBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).registryKey(OXYGEN_COMPRESSOR_KEY))
+    );
+
+    public static final RegistryKey<Block> CARGO_LAUNCH_CONTROLLER_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("cargo_launch_controller"));
+    public static final CargoLaunchControllerBlock CARGO_LAUNCH_CONTROLLER = Registry.register(
+            Registries.BLOCK,
+            CARGO_LAUNCH_CONTROLLER_KEY,
+            new CargoLaunchControllerBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).registryKey(CARGO_LAUNCH_CONTROLLER_KEY))
+    );
+
+    public static final RegistryKey<Block> CARGO_ROCKET_DETECTOR_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("cargo_rocket_detector"));
+    public static final CargoRocketDetectorBlock CARGO_ROCKET_DETECTOR = Registry.register(
+            Registries.BLOCK,
+            CARGO_ROCKET_DETECTOR_KEY,
+            new CargoRocketDetectorBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).registryKey(CARGO_ROCKET_DETECTOR_KEY))
+    );
+
+    public static final RegistryKey<Block> CARGO_MANAGER_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("cargo_manager"));
+    public static final CargoManagerBlock CARGO_MANAGER = Registry.register(
+            Registries.BLOCK,
+            CARGO_MANAGER_KEY,
+            new CargoManagerBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).registryKey(CARGO_MANAGER_KEY))
     );
 
     public static void load() {}

@@ -2,7 +2,7 @@ package io.github.implicitsaber.mod.server_side_rocketry.mixin;
 
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
 import io.github.implicitsaber.mod.server_side_rocketry.keys.ModDamageTypeKeys;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponents;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
 import io.github.implicitsaber.mod.server_side_rocketry.util.SpaceEffectsManager;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -48,16 +48,32 @@ public abstract class LivingEntityMixin extends EntityMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void server_side_rocketry$tick(CallbackInfo ci) {
-        SpaceEffectsManager.SpaceEffects effects = SpaceEffectsManager.getSpaceEffectsFor(this.getEntityWorld().getRegistryKey());
-        if(!effects.hasOxygen() && !this.isInCreativeMode()) {
+        if(!this.isInCreativeMode()) {
+            SpaceEffectsManager.SpaceEffects effects = SpaceEffectsManager.getSpaceEffectsFor(this.getEntityWorld().getRegistryKey());
             ItemStack helmet = this.getEquippedStack(EquipmentSlot.HEAD);
-            boolean canBreathe = false;
-            if(helmet.contains(ModDataComponents.SPACE_ARMOR)) canBreathe = server_side_rocketry$attemptConsumeOxygen();
-            else server_side_rocketry$oxygenNotInUse();
-            if(!canBreathe && this.getEntityWorld() instanceof ServerWorld sw) {
-                DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.OXYGEN_LOSS);
-                this.damage(sw, source, 1.0f);
-                this.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 150, 4, false, false));
+            ItemStack chestplate = this.getEquippedStack(EquipmentSlot.CHEST);
+            ItemStack leggings = this.getEquippedStack(EquipmentSlot.LEGS);
+            ItemStack boots = this.getEquippedStack(EquipmentSlot.FEET);
+            if(this.getEntityWorld() instanceof ServerWorld sw) {
+                if(!effects.hasOxygen()) {
+                    boolean canBreathe = false;
+                    if (helmet.contains(ModDataComponentTypes.SPACE_ARMOR)) canBreathe = server_side_rocketry$attemptConsumeOxygen();
+                    else server_side_rocketry$oxygenNotInUse();
+                    if (!canBreathe) {
+                        DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.OXYGEN_LOSS);
+                        this.damage(sw, source, 1.0f);
+                        this.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 150, 4, false, false));
+                    }
+                } else server_side_rocketry$oxygenNotInUse();
+                if (effects.climate().causesDamage()) {
+                    if (!helmet.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                            !chestplate.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                            !leggings.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                            !boots.contains(ModDataComponentTypes.SPACE_ARMOR)) {
+                        DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.EXTREME_TEMPERATURES);
+                        this.damage(sw, source, 1.0f);
+                    }
+                }
             }
         } else server_side_rocketry$oxygenNotInUse();
     }
@@ -66,10 +82,10 @@ public abstract class LivingEntityMixin extends EntityMixin {
     protected boolean server_side_rocketry$attemptConsumeOxygen() {
         for(EquipmentSlot slot : EquipmentSlot.values()) {
             ItemStack stack = this.getEquippedStack(slot);
-            if(stack.contains(ModDataComponents.MAX_OXYGEN)) {
-                int oxygen = stack.getOrDefault(ModDataComponents.OXYGEN, 0);
+            if(stack.contains(ModDataComponentTypes.MAX_OXYGEN)) {
+                int oxygen = stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0);
                 if(oxygen > 0) {
-                    stack.set(ModDataComponents.OXYGEN, oxygen - 1);
+                    stack.set(ModDataComponentTypes.OXYGEN, oxygen - 1);
                     return true;
                 }
             }

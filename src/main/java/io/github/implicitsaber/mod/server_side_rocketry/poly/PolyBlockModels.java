@@ -62,6 +62,15 @@ public class PolyBlockModels {
     public static final PolymerBlockModel OXYGEN_COMPRESSOR_FULL_WEST = PolymerBlockModel.of(id("block/oxygen_compressor/full"), 0, 270);
     public static final BlockState OXYGEN_COMPRESSOR_FULL_WEST_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, OXYGEN_COMPRESSOR_FULL_WEST);
 
+    public static final PolymerBlockModel CARGO_MANAGER = PolymerBlockModel.of(id("block/cargo_manager"));
+    public static final BlockState CARGO_MANAGER_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, CARGO_MANAGER);
+
+    public static final PolymerBlockModel CARGO_LAUNCH_CONTROLLER = PolymerBlockModel.of(id("block/cargo_launch_controller"));
+    public static final BlockState CARGO_LAUNCH_CONTROLLER_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, CARGO_LAUNCH_CONTROLLER);
+
+    public static final PolymerBlockModel CARGO_ROCKET_DETECTOR = PolymerBlockModel.of(id("block/cargo_rocket_detector"));
+    public static final BlockState CARGO_ROCKET_DETECTOR_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, CARGO_ROCKET_DETECTOR);
+
     public static BlockState fallback(PacketContext context, BlockState modelState, BlockState fallbackState) {
         if(!PolymerResourcePackUtils.hasMainPack(context)) return fallbackState;
         return modelState == null ? fallbackState : modelState;

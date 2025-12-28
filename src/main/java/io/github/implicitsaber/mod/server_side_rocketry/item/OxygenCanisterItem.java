@@ -3,7 +3,7 @@ package io.github.implicitsaber.mod.server_side_rocketry.item;
 import eu.pb4.polymer.core.api.item.PolymerItem;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponents;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.LoreComponent;
 import net.minecraft.item.Item;
@@ -35,8 +35,8 @@ public class OxygenCanisterItem extends Item implements PolymerItem {
     @Override
     public ItemStack getPolymerItemStack(ItemStack stack, TooltipType tooltipType, PacketContext context) {
         ItemStack poly = PolymerItem.super.getPolymerItemStack(stack, tooltipType, context);
-        int maxOxygen = stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0);
-        int oxygen = stack.getOrDefault(ModDataComponents.OXYGEN, 0);
+        int maxOxygen = stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0);
+        int oxygen = stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0);
         List<Text> lore = new ArrayList<>(poly.getOrDefault(DataComponentTypes.LORE, LoreComponent.DEFAULT).lines());
         if(lore.size() < 256) lore.add(Text.translatable(OXYGEN_TRANSLATION_KEY, oxygen, maxOxygen)
                 .setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.AQUA)));
@@ -47,9 +47,9 @@ public class OxygenCanisterItem extends Item implements PolymerItem {
     @Override
     public @Nullable Identifier getPolymerItemModel(ItemStack stack, PacketContext context) {
         if(!PolymerResourcePackUtils.hasMainPack(context)) return null;
-        int maxOxygen = stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0);
+        int maxOxygen = stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0);
         if(maxOxygen < 1) return TO_MODEL.apply(0);
-        int oxygen = stack.getOrDefault(ModDataComponents.OXYGEN, 0);
+        int oxygen = stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0);
         float d = (float) oxygen / maxOxygen;
         int textureId = (int) Math.clamp(d * 8, 0, 8);
         return TO_MODEL.apply(textureId);

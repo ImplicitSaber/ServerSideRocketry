@@ -1,18 +1,16 @@
 package io.github.implicitsaber.mod.server_side_rocketry.mixin;
 
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
-import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponents;
+import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -20,9 +18,6 @@ import java.util.Objects;
 
 @Mixin(ServerPlayerEntity.class)
 public abstract class ServerPlayerEntityMixin extends LivingEntityMixin {
-
-    @Shadow
-    public abstract ServerWorld getEntityWorld();
 
     @Unique
     private static final Text DEFAULT_BOSSBAR_TEXT = Text.translatable(ServerSideRocketry.MOD_ID + ".oxygen_boss_bar")
@@ -49,12 +44,12 @@ public abstract class ServerPlayerEntityMixin extends LivingEntityMixin {
         PlayerInventory inv = p.getInventory();
         for(int i = 0; i < inv.size(); i++) {
             ItemStack stack = inv.getStack(i);
-            if(stack.contains(ModDataComponents.MAX_OXYGEN)) {
-                maxOxygen += Math.max(0, stack.getOrDefault(ModDataComponents.MAX_OXYGEN, 0));
-                int o = Math.max(0, stack.getOrDefault(ModDataComponents.OXYGEN, 0));
+            if(stack.contains(ModDataComponentTypes.MAX_OXYGEN)) {
+                maxOxygen += Math.max(0, stack.getOrDefault(ModDataComponentTypes.MAX_OXYGEN, 0));
+                int o = Math.max(0, stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0));
                 oxygen += o;
                 if(o > 0 && !canBreathe) {
-                    stack.set(ModDataComponents.OXYGEN, o - 1);
+                    stack.set(ModDataComponentTypes.OXYGEN, o - 1);
                     canBreathe = true;
                 }
             }

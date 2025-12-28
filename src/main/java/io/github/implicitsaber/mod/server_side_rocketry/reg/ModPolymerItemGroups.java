@@ -23,6 +23,10 @@ public class ModPolymerItemGroups {
                 e.add(ModItems.SPACE_LEGGINGS);
                 e.add(ModItems.SPACE_BOOTS);
                 e.add(ModItems.ROCKET);
+                e.add(ModItems.CARGO_ROCKET);
+                e.add(ModBlockItems.CARGO_MANAGER);
+                e.add(ModBlockItems.CARGO_LAUNCH_CONTROLLER);
+                e.add(ModBlockItems.CARGO_ROCKET_DETECTOR);
                 e.add(ModBlockItems.MOON_ROCK);
             })
             .build();

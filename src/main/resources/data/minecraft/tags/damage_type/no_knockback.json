@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "server_side_rocketry:oxygen_loss"
+    "server_side_rocketry:oxygen_loss",
+    "server_side_rocketry:extreme_temperatures"
   ]
 }
