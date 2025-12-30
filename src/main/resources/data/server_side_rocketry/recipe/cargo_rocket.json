@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "server_side_rocketry:rocket",
+    "server_side_rocketry:automatic_guidance_chip",
+    "minecraft:chest"
+  ],
+  "result": {
+    "id": "server_side_rocketry:cargo_rocket",
+    "count": 1
+  }
+}

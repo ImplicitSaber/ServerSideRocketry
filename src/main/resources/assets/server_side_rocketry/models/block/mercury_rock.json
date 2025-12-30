@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "server_side_rocketry:block/mercury_rock"
+  }
+}

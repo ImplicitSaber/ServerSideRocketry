@@ -4,20 +4,22 @@ import eu.pb4.polymer.blocks.api.PolymerTexturedBlock;
 import io.github.implicitsaber.mod.server_side_rocketry.poly.PolyBlockModels;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import xyz.nucleoid.packettweaker.PacketContext;
 
-public class MoonRockBlock extends Block implements PolymerTexturedBlock {
+public class ServerTexturedBlock extends Block implements PolymerTexturedBlock {
 
-    private static final BlockState FALLBACK = Blocks.SMOOTH_STONE.getDefaultState();
+    private final BlockState fallback;
+    private final BlockState model;
 
-    public MoonRockBlock(Settings settings) {
+    public ServerTexturedBlock(Settings settings, BlockState fallback, BlockState model) {
         super(settings);
+        this.fallback = fallback;
+        this.model = model;
     }
 
     @Override
     public BlockState getPolymerBlockState(BlockState state, PacketContext ctx) {
-        return PolyBlockModels.fallback(ctx, PolyBlockModels.MOON_ROCK_STATE, FALLBACK);
+        return PolyBlockModels.fallback(ctx, this.model, this.fallback);
     }
 
 }

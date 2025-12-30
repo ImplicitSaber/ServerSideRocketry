@@ -2,7 +2,9 @@ package io.github.implicitsaber.mod.server_side_rocketry.mixin;
 
 import io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketry;
 import io.github.implicitsaber.mod.server_side_rocketry.keys.ModDamageTypeKeys;
+import io.github.implicitsaber.mod.server_side_rocketry.keys.ModEnchantmentKeys;
 import io.github.implicitsaber.mod.server_side_rocketry.reg.ModDataComponentTypes;
+import io.github.implicitsaber.mod.server_side_rocketry.util.EnchantmentUtils;
 import io.github.implicitsaber.mod.server_side_rocketry.util.SpaceEffectsManager;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -48,16 +50,17 @@ public abstract class LivingEntityMixin extends EntityMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void server_side_rocketry$tick(CallbackInfo ci) {
-        if(!this.isInCreativeMode()) {
+        if (!this.isInCreativeMode() && !this.isSpectator()) {
             SpaceEffectsManager.SpaceEffects effects = SpaceEffectsManager.getSpaceEffectsFor(this.getEntityWorld().getRegistryKey());
             ItemStack helmet = this.getEquippedStack(EquipmentSlot.HEAD);
             ItemStack chestplate = this.getEquippedStack(EquipmentSlot.CHEST);
             ItemStack leggings = this.getEquippedStack(EquipmentSlot.LEGS);
             ItemStack boots = this.getEquippedStack(EquipmentSlot.FEET);
-            if(this.getEntityWorld() instanceof ServerWorld sw) {
-                if(!effects.hasOxygen()) {
+            if (this.getEntityWorld() instanceof ServerWorld sw) {
+                if (!effects.hasOxygen()) {
                     boolean canBreathe = false;
-                    if (helmet.contains(ModDataComponentTypes.SPACE_ARMOR)) canBreathe = server_side_rocketry$attemptConsumeOxygen();
+                    if (helmet.contains(ModDataComponentTypes.SPACE_ARMOR))
+                        canBreathe = server_side_rocketry$attemptConsumeOxygen();
                     else server_side_rocketry$oxygenNotInUse();
                     if (!canBreathe) {
                         DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.OXYGEN_LOSS);
@@ -65,26 +68,38 @@ public abstract class LivingEntityMixin extends EntityMixin {
                         this.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 150, 4, false, false));
                     }
                 } else server_side_rocketry$oxygenNotInUse();
-                if (effects.climate().causesDamage()) {
-                    if (!helmet.contains(ModDataComponentTypes.SPACE_ARMOR) ||
-                            !chestplate.contains(ModDataComponentTypes.SPACE_ARMOR) ||
-                            !leggings.contains(ModDataComponentTypes.SPACE_ARMOR) ||
-                            !boots.contains(ModDataComponentTypes.SPACE_ARMOR)) {
-                        DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.EXTREME_TEMPERATURES);
-                        this.damage(sw, source, 1.0f);
-                    }
+                if (effects.climate().causesDamage() && !helmet.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                        !chestplate.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                        !leggings.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                        !boots.contains(ModDataComponentTypes.SPACE_ARMOR) ||
+                        effects.climate().requiresAdvancedGear() &&
+                                (!EnchantmentUtils.hasEnchantment(helmet, ModEnchantmentKeys.INSULATION, this.getRegistryManager()) ||
+                                        !EnchantmentUtils.hasEnchantment(chestplate, ModEnchantmentKeys.INSULATION, this.getRegistryManager()) ||
+                                        !EnchantmentUtils.hasEnchantment(leggings, ModEnchantmentKeys.INSULATION, this.getRegistryManager()) ||
+                                        !EnchantmentUtils.hasEnchantment(boots, ModEnchantmentKeys.INSULATION, this.getRegistryManager()))
+                ) {
+                    DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.EXTREME_TEMPERATURES);
+                    this.damage(sw, source, 1.0f);
                 }
-            }
+                if(effects.highPressure() && (!EnchantmentUtils.hasEnchantment(helmet, ModEnchantmentKeys.PRESSURE_RESISTANCE, this.getRegistryManager()) ||
+                        !EnchantmentUtils.hasEnchantment(chestplate, ModEnchantmentKeys.PRESSURE_RESISTANCE, this.getRegistryManager()) ||
+                        !EnchantmentUtils.hasEnchantment(leggings, ModEnchantmentKeys.PRESSURE_RESISTANCE, this.getRegistryManager()) ||
+                        !EnchantmentUtils.hasEnchantment(boots, ModEnchantmentKeys.PRESSURE_RESISTANCE, this.getRegistryManager()))
+                ) {
+                    DamageSource source = sw.getDamageSources().create(ModDamageTypeKeys.EXTREME_PRESSURE);
+                    this.damage(sw, source, 2.0f);
+                }
+            } else server_side_rocketry$oxygenNotInUse();
         } else server_side_rocketry$oxygenNotInUse();
     }
 
     @Unique
     protected boolean server_side_rocketry$attemptConsumeOxygen() {
-        for(EquipmentSlot slot : EquipmentSlot.values()) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
             ItemStack stack = this.getEquippedStack(slot);
-            if(stack.contains(ModDataComponentTypes.MAX_OXYGEN)) {
+            if (stack.contains(ModDataComponentTypes.MAX_OXYGEN)) {
                 int oxygen = stack.getOrDefault(ModDataComponentTypes.OXYGEN, 0);
-                if(oxygen > 0) {
+                if (oxygen > 0) {
                     stack.set(ModDataComponentTypes.OXYGEN, oxygen - 1);
                     return true;
                 }
@@ -111,7 +126,7 @@ public abstract class LivingEntityMixin extends EntityMixin {
     @Unique
     private void server_side_rocketry$updateForWorld(World world) {
         EntityAttributeInstance instance = this.getAttributes().getCustomInstance(EntityAttributes.GRAVITY);
-        if(instance != null) {
+        if (instance != null) {
             instance.removeModifier(server_side_rocketry$MODIFIER_ID);
             instance.addTemporaryModifier(new EntityAttributeModifier(
                     server_side_rocketry$MODIFIER_ID,

@@ -83,25 +83,18 @@ public abstract class AbstractRocketEntity extends Entity implements PolymerEnti
             new EntityAttachment(holder, this, false);
         }
         holder.tick();
+        boolean shouldFireThruster = false;
+        float thrusterVolume = 1;
+        float particleSpeed = 8;
         if(this.travelState == TravelState.LANDING) {
             this.setVelocity(new Vec3d(0, -0.3, 0));
-            if(this.age % 4 == 0) this.playSound(ModSoundEvents.ENTITY_ROCKET_ENGINE, 0.25f, 1.0f);
-            if(this.getEntityWorld() instanceof ServerWorld sw) for(int i = 0; i < 5; i++ ) sw.spawnParticles(
-                    ParticleTypes.FLAME,
-                    this.getX(), this.getY(), this.getZ(),
-                    0, this.getRandom().nextTriangular(0, 0.5), -1, this.getRandom().nextTriangular(0, 0.5),
-                    2
-            );
+            shouldFireThruster = true;
+            thrusterVolume = 0.25f;
+            particleSpeed = 2;
             if(this.isOnGround()) this.travelState = TravelState.LANDED;
         } else if(this.travelState == TravelState.LAUNCHED) {
             this.setVelocity(new Vec3d(0, 0.8, 0));
-            if(this.age % 4 == 0) this.playSound(ModSoundEvents.ENTITY_ROCKET_ENGINE, 1.0f, 1.0f);
-            if(this.getEntityWorld() instanceof ServerWorld sw) for(int i = 0; i < 5; i++ ) sw.spawnParticles(
-                    ParticleTypes.FLAME,
-                    this.getX(), this.getY(), this.getZ(),
-                    0, this.getRandom().nextTriangular(0, 0.5), -1, this.getRandom().nextTriangular(0, 0.5),
-                    8
-            );
+            shouldFireThruster = true;
             if(this.getY() > 400) {
                 MinecraftServer server = this.getEntityWorld().getServer();
                 if(server != null) {
@@ -127,6 +120,15 @@ public abstract class AbstractRocketEntity extends Entity implements PolymerEnti
         }
         this.applyGravity();
         this.move(MovementType.SELF, this.getVelocity());
+        if(shouldFireThruster) {
+            if(this.age % 4 == 0) this.playSound(ModSoundEvents.ENTITY_ROCKET_ENGINE, thrusterVolume, 1.0f);
+            if(this.getEntityWorld() instanceof ServerWorld sw) for(int i = 0; i < 5; i++ ) sw.spawnParticles(
+                    ParticleTypes.FLAME,
+                    this.getX(), this.getY(), this.getZ(),
+                    0, this.getRandom().nextTriangular(0, 0.5), -1, this.getRandom().nextTriangular(0, 0.5),
+                    particleSpeed
+            );
+        }
     }
 
     @Nullable

@@ -24,10 +24,14 @@ public class ModPolymerItemGroups {
                 e.add(ModItems.SPACE_BOOTS);
                 e.add(ModItems.ROCKET);
                 e.add(ModItems.CARGO_ROCKET);
+                e.add(ModItems.AUTOMATIC_GUIDANCE_CHIP);
                 e.add(ModBlockItems.CARGO_MANAGER);
                 e.add(ModBlockItems.CARGO_LAUNCH_CONTROLLER);
                 e.add(ModBlockItems.CARGO_ROCKET_DETECTOR);
                 e.add(ModBlockItems.MOON_ROCK);
+                e.add(ModBlockItems.MARS_ROCK);
+                e.add(ModBlockItems.MERCURY_ROCK);
+                e.add(ModBlockItems.VENUS_ROCK);
             })
             .build();
 

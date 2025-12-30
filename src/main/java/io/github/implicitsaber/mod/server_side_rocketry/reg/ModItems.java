@@ -90,6 +90,13 @@ public class ModItems {
             new RocketItem(ModEntityTypes.CARGO_ROCKET, new Item.Settings().registryKey(CARGO_ROCKET_KEY).maxCount(1))
     );
 
+    public static final RegistryKey<Item> AUTOMATIC_GUIDANCE_CHIP_KEY = RegistryKey.of(RegistryKeys.ITEM, id("automatic_guidance_chip"));
+    public static final ServerItem AUTOMATIC_GUIDANCE_CHIP = Registry.register(
+            Registries.ITEM,
+            AUTOMATIC_GUIDANCE_CHIP_KEY,
+            new ServerItem(Items.GOLD_NUGGET, new Item.Settings().registryKey(AUTOMATIC_GUIDANCE_CHIP_KEY))
+    );
+
     public static void load() {}
     
 }

@@ -14,6 +14,15 @@ public class PolyBlockModels {
     public static final PolymerBlockModel MOON_ROCK = PolymerBlockModel.of(id("block/moon_rock"));
     public static final BlockState MOON_ROCK_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, MOON_ROCK);
 
+    public static final PolymerBlockModel MARS_ROCK = PolymerBlockModel.of(id("block/mars_rock"));
+    public static final BlockState MARS_ROCK_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, MARS_ROCK);
+
+    public static final PolymerBlockModel MERCURY_ROCK = PolymerBlockModel.of(id("block/mercury_rock"));
+    public static final BlockState MERCURY_ROCK_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, MERCURY_ROCK);
+
+    public static final PolymerBlockModel VENUS_ROCK = PolymerBlockModel.of(id("block/venus_rock"));
+    public static final BlockState VENUS_ROCK_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, VENUS_ROCK);
+    
     public static final PolymerBlockModel OXYGEN_COMPRESSOR_OFF_NORTH = PolymerBlockModel.of(id("block/oxygen_compressor/off"));
     public static final BlockState OXYGEN_COMPRESSOR_OFF_NORTH_STATE = PolymerBlockResourceUtils.requestBlock(BlockModelType.FULL_BLOCK, OXYGEN_COMPRESSOR_OFF_NORTH);
 

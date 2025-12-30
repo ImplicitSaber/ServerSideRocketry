@@ -1,11 +1,10 @@
 {
-  "type": "server_side_rocketry:moon",
+  "type": "server_side_rocketry:mercury",
   "generator": {
     "type": "minecraft:noise",
     "settings": {
-      "name": "server_side_rocketry:moon",
       "default_block": {
-        "Name": "server_side_rocketry:moon_rock"
+        "Name": "server_side_rocketry:mercury_rock"
       },
       "default_fluid": {
         "Name": "minecraft:air"
@@ -41,7 +40,7 @@
           "argument1": {
             "type": "minecraft:y_clamped_gradient",
             "from_y": -64,
-            "to_y": 0,
+            "to_y": 256,
             "from_value": 1,
             "to_value": -1
           },
@@ -52,13 +51,13 @@
               "noise": "minecraft:surface",
               "xz_scale": 1,
               "y_scale": 1,
-              "shift_x": 35317,
-              "shift_y": 8269,
-              "shift_z": 1657
+              "shift_x": 65537,
+              "shift_y": 193939,
+              "shift_z": 5393
             },
             "argument2": {
               "type": "minecraft:constant",
-              "argument": 0.25
+              "argument": 0.125
             }
           }
         }
@@ -86,7 +85,7 @@
     },
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "server_side_rocketry:moon"
+      "biome": "server_side_rocketry:mercury"
     }
   }
 }

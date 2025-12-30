@@ -19,6 +19,27 @@ public class ModBlockItems {
             new ServerBlockItem(ModBlocks.MOON_ROCK, Items.SMOOTH_STONE, new Item.Settings().registryKey(MOON_ROCK_KEY))
     );
 
+    public static final RegistryKey<Item> MARS_ROCK_KEY = RegistryKey.of(RegistryKeys.ITEM, id("mars_rock"));
+    public static final ServerBlockItem MARS_ROCK = Registry.register(
+            Registries.ITEM,
+            MARS_ROCK_KEY,
+            new ServerBlockItem(ModBlocks.MARS_ROCK, Items.NETHERRACK, new Item.Settings().registryKey(MARS_ROCK_KEY))
+    );
+
+    public static final RegistryKey<Item> MERCURY_ROCK_KEY = RegistryKey.of(RegistryKeys.ITEM, id("mercury_rock"));
+    public static final ServerBlockItem MERCURY_ROCK = Registry.register(
+            Registries.ITEM,
+            MERCURY_ROCK_KEY,
+            new ServerBlockItem(ModBlocks.MERCURY_ROCK, Items.NETHERRACK, new Item.Settings().registryKey(MERCURY_ROCK_KEY))
+    );
+
+    public static final RegistryKey<Item> VENUS_ROCK_KEY = RegistryKey.of(RegistryKeys.ITEM, id("venus_rock"));
+    public static final ServerBlockItem VENUS_ROCK = Registry.register(
+            Registries.ITEM,
+            VENUS_ROCK_KEY,
+            new ServerBlockItem(ModBlocks.VENUS_ROCK, Items.NETHERRACK, new Item.Settings().registryKey(VENUS_ROCK_KEY))
+    );
+
     public static final RegistryKey<Item> OXYGEN_COMPRESSOR_KEY = RegistryKey.of(RegistryKeys.ITEM, id("oxygen_compressor"));
     public static final ServerBlockItem OXYGEN_COMPRESSOR = Registry.register(
             Registries.ITEM,

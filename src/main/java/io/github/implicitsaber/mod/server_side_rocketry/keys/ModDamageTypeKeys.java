@@ -10,5 +10,6 @@ public class ModDamageTypeKeys {
 
     public static final RegistryKey<DamageType> OXYGEN_LOSS = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, id("oxygen_loss"));
     public static final RegistryKey<DamageType> EXTREME_TEMPERATURES = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, id("extreme_temperatures"));
+    public static final RegistryKey<DamageType> EXTREME_PRESSURE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, id("extreme_pressure"));
 
 }

@@ -1,0 +1,32 @@
+{
+  "attributes": {
+    "minecraft:gameplay/bed_rule": {
+      "can_sleep": "never",
+      "can_set_spawn": "always",
+      "explodes": false,
+      "error_message": {
+        "translate": "server_side_rocketry.sleep_in_space"
+      }
+    },
+    "minecraft:visual/star_brightness": 1,
+    "minecraft:gameplay/can_pillager_patrol_spawn": false,
+    "minecraft:gameplay/can_start_raid": false,
+    "minecraft:visual/water_fog_color": "#332005",
+    "minecraft:visual/sky_color": "#d19a4b",
+    "minecraft:visual/fog_color": "#d19a4b",
+    "minecraft:gameplay/water_evaporates": true
+  },
+  "ambient_light": 0,
+  "coordinate_scale": 1,
+  "has_ceiling": false,
+  "has_skylight": true,
+  "has_fixed_time": true,
+  "skybox": "overworld",
+  "cardinal_light": "default",
+  "height": 384,
+  "infiniburn": "#server_side_rocketry:infiniburn_mars",
+  "logical_height": 384,
+  "min_y": -64,
+  "monster_spawn_block_light_limit": 0,
+  "monster_spawn_light_level": 0
+}

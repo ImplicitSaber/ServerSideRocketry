@@ -1,6 +1,7 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
 import io.github.implicitsaber.mod.server_side_rocketry.block.*;
+import io.github.implicitsaber.mod.server_side_rocketry.poly.PolyBlockModels;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,10 +15,35 @@ import static io.github.implicitsaber.mod.server_side_rocketry.ServerSideRocketr
 public class ModBlocks {
 
     public static final RegistryKey<Block> MOON_ROCK_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("moon_rock"));
-    public static final MoonRockBlock MOON_ROCK = Registry.register(
+    public static final ServerTexturedBlock MOON_ROCK = Registry.register(
             Registries.BLOCK,
             MOON_ROCK_KEY,
-            new MoonRockBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(MOON_ROCK_KEY))
+            new ServerTexturedBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(MOON_ROCK_KEY),
+                    Blocks.SMOOTH_STONE.getDefaultState(), PolyBlockModels.MOON_ROCK_STATE)
+    );
+
+    public static final RegistryKey<Block> MARS_ROCK_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("mars_rock"));
+    public static final ServerTexturedBlock MARS_ROCK = Registry.register(
+            Registries.BLOCK,
+            MARS_ROCK_KEY,
+            new ServerTexturedBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(MARS_ROCK_KEY),
+                    Blocks.NETHERRACK.getDefaultState(), PolyBlockModels.MARS_ROCK_STATE)
+    );
+
+    public static final RegistryKey<Block> MERCURY_ROCK_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("mercury_rock"));
+    public static final ServerTexturedBlock MERCURY_ROCK = Registry.register(
+            Registries.BLOCK,
+            MERCURY_ROCK_KEY,
+            new ServerTexturedBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(MERCURY_ROCK_KEY),
+                    Blocks.NETHERRACK.getDefaultState(), PolyBlockModels.MERCURY_ROCK_STATE)
+    );
+
+    public static final RegistryKey<Block> VENUS_ROCK_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("venus_rock"));
+    public static final ServerTexturedBlock VENUS_ROCK = Registry.register(
+            Registries.BLOCK,
+            VENUS_ROCK_KEY,
+            new ServerTexturedBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).registryKey(VENUS_ROCK_KEY),
+                    Blocks.NETHERRACK.getDefaultState(), PolyBlockModels.VENUS_ROCK_STATE)
     );
 
     public static final RegistryKey<Block> OXYGEN_COMPRESSOR_KEY = RegistryKey.of(RegistryKeys.BLOCK, id("oxygen_compressor"));

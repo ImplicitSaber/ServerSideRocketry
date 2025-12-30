@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "121",
+    "232",
+    "121"
+  ],
+  "key": {
+    "1": "#c:ingots/copper",
+    "2": "minecraft:redstone",
+    "3": "server_side_rocketry:moon_rock"
+  },
+  "result": {
+    "id": "server_side_rocketry:automatic_guidance_chip",
+    "count": 1
+  }
+}
