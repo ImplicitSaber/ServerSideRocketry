@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:multi_action",
+  "title": {
+    "translate": "server_side_rocketry.guidebook.page8.title"
+  },
+  "body": [
+    {
+      "type": "minecraft:item",
+      "item": {
+        "id": "minecraft:stone",
+        "components": {
+          "minecraft:item_model": "server_side_rocketry:poly_gui/guidebook/moon"
+        }
+      },
+      "show_tooltip": false
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "server_side_rocketry.guidebook.page8.contents"
+      }
+    }
+  ],
+  "can_close_with_escape": true,
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "server_side_rocketry.guidebook.exit"
+    }
+  },
+  "actions": [
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.previous_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/7"
+      }
+    },
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.next_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/9"
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 package io.github.implicitsaber.mod.server_side_rocketry.reg;
 
+import io.github.implicitsaber.mod.server_side_rocketry.item.GuidebookItem;
 import io.github.implicitsaber.mod.server_side_rocketry.item.OxygenCanisterItem;
 import io.github.implicitsaber.mod.server_side_rocketry.item.RocketItem;
 import io.github.implicitsaber.mod.server_side_rocketry.item.ServerItem;
@@ -95,6 +96,13 @@ public class ModItems {
             Registries.ITEM,
             AUTOMATIC_GUIDANCE_CHIP_KEY,
             new ServerItem(Items.GOLD_NUGGET, new Item.Settings().registryKey(AUTOMATIC_GUIDANCE_CHIP_KEY))
+    );
+
+    public static final RegistryKey<Item> GUIDEBOOK_KEY = RegistryKey.of(RegistryKeys.ITEM, id("guidebook"));
+    public static final GuidebookItem GUIDEBOOK = Registry.register(
+            Registries.ITEM,
+            GUIDEBOOK_KEY,
+            new GuidebookItem(new Item.Settings().registryKey(GUIDEBOOK_KEY))
     );
 
     public static void load() {}

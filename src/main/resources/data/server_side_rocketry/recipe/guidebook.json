@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:gunpowder"
+  ],
+  "result": {
+    "id": "server_side_rocketry:guidebook",
+    "count": 1
+  }
+}

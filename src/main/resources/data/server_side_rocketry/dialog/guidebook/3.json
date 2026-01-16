@@ -1,0 +1,61 @@
+{
+  "type": "minecraft:multi_action",
+  "title": {
+    "translate": "server_side_rocketry.guidebook.page3.title"
+  },
+  "body": [
+    {
+      "type": "minecraft:item",
+      "item": {
+        "id": "minecraft:iron_block",
+        "components": {
+          "minecraft:item_model": "server_side_rocketry:oxygen_compressor"
+        }
+      },
+      "show_tooltip": false
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "server_side_rocketry.guidebook.page3.contents"
+      }
+    }
+  ],
+  "can_close_with_escape": true,
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "server_side_rocketry.guidebook.exit"
+    }
+  },
+  "actions": [
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.previous_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/2"
+      }
+    },
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.next_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/4"
+      }
+    },
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.unlock_recipes"
+      },
+      "action": {
+        "type": "minecraft:custom",
+        "id": "server_side_rocketry:unlock_recipes_pg3"
+      },
+      "width": 300
+    }
+  ]
+}

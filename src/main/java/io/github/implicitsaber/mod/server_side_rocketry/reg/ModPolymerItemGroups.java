@@ -16,6 +16,7 @@ public class ModPolymerItemGroups {
             .displayName(Text.translatable("itemGroup." + ServerSideRocketry.MOD_ID + ".main"))
             .icon(ModItems.ROCKET::getDefaultStack)
             .entries((ctx, e) -> {
+                e.add(ModItems.GUIDEBOOK);
                 e.add(ModItems.OXYGEN_CANISTER);
                 e.add(ModBlockItems.OXYGEN_COMPRESSOR);
                 e.add(ModItems.SPACE_HELMET);

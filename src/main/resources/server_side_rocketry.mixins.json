@@ -8,7 +8,9 @@
     "EntityMixin",
     "ItemDisplayEntityAccessor",
     "LivingEntityMixin",
-    "ServerPlayerEntityMixin"
+    "ServerCommonNetworkHandlerMixin",
+    "ServerPlayerEntityMixin",
+    "ServerPlayNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

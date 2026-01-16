@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:multi_action",
+  "title": {
+    "translate": "server_side_rocketry.guidebook.page9.title"
+  },
+  "body": [
+    {
+      "type": "minecraft:item",
+      "item": {
+        "id": "minecraft:netherrack",
+        "components": {
+          "minecraft:item_model": "server_side_rocketry:poly_gui/guidebook/mars"
+        }
+      },
+      "show_tooltip": false
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "server_side_rocketry.guidebook.page9.contents"
+      }
+    }
+  ],
+  "can_close_with_escape": true,
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "server_side_rocketry.guidebook.exit"
+    }
+  },
+  "actions": [
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.previous_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/8"
+      }
+    },
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.next_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/9"
+      }
+    }
+  ]
+}

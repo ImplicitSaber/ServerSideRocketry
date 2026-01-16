@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:multi_action",
+  "title": {
+    "translate": "server_side_rocketry.guidebook.page1.title"
+  },
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "server_side_rocketry.guidebook.page1.welcome",
+        "underlined": true
+      }
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "server_side_rocketry.guidebook.page1.contents"
+      }
+    }
+  ],
+  "can_close_with_escape": true,
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "server_side_rocketry.guidebook.exit"
+    }
+  },
+  "actions": [
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.previous_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/1"
+      }
+    },
+    {
+      "label": {
+        "translate": "server_side_rocketry.guidebook.next_page"
+      },
+      "action": {
+        "type": "minecraft:show_dialog",
+        "dialog": "server_side_rocketry:guidebook/2"
+      }
+    }
+  ]
+}
